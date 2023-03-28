@@ -1,13 +1,15 @@
 #pragma once
 
 #include "../PageReplacementAlgorithm.h"
-
+#include <vector>
 
 class NRU : public PageReplacementAlgorithm
 {
 
 private:
 
+	// Creating a vector of integers that are the page frames. 
+	std::vector<int> pages;
 
 public:
 	NRU() : PageReplacementAlgorithm() { }

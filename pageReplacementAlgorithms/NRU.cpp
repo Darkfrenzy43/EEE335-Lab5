@@ -6,7 +6,7 @@
 int NRU::findVirtualPageToEvict(TableEntry *pageTable)
 {
 
-	printf("This happened.\n");
+	printf(">>>This happened.\n");
 
 	TableEntry* temp_ptr = pageTable; 
 
@@ -28,15 +28,15 @@ int NRU::findVirtualPageToEvict(TableEntry *pageTable)
 void NRU::virtualPageEvicted(TableEntry *pageTable, int virtualPage)
 {
 
-	printf("Virtual page has been evicted.\n");
+	printf(">>>Virtual page has been evicted.\n");
 }
 
 void NRU::virtualPageLoaded(TableEntry *pageTable, int virtualPage)
 {
-	printf("Virtual page has been loaded.\n");
+	printf(">>> Virtual page has been loaded.\n");
 }
 
 void NRU::virtualPageAccessed(TableEntry *pageTable, int virtualPage, bool modified)
 {
-
+	printf(">>> Virtual page has been accessed.\n");
 }

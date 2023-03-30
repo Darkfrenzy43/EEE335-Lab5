@@ -12,9 +12,15 @@ int SecondChance::findVirtualPageToEvict(TableEntry *pageTable)
 		return 0;
 	}
 
+
+
 	// Otherwise, pop out first page in queue and return number
-	int evict_page = page_queue.front();
+	int page_to_check = page_queue.front();
 	page_queue.pop();
+
+	// Get the page in the page table, check if gets second chance
+	// todo - figure out how to access the page table. It's done with pointers as far as I know. 
+
 	printf(">>> Second Chance: Found page #%d to evict.\n", evict_page);
 
 	return evict_page;

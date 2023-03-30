@@ -1,6 +1,12 @@
 #pragma once
 
+
+// --- Importing needed modules and declaring namespaces ---
+
 #include "../PageReplacementAlgorithm.h"
+#include <queue>
+
+using namespace std;
 
 
 class FIFO : public PageReplacementAlgorithm
@@ -8,6 +14,9 @@ class FIFO : public PageReplacementAlgorithm
 
 private:
 
+	// Creating the queue for FIFO algo
+	queue<int> page_queue;
+	
 
 public:
 	FIFO() : PageReplacementAlgorithm() { }

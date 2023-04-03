@@ -1,6 +1,7 @@
 #include "RandomPRA.h"
 #include <assert.h>
 #include <cstdlib>
+#include <stdio.h>
 
 
 
@@ -30,6 +31,10 @@ void RandomPRA::virtualPageEvicted(TableEntry *pageTable, int virtualPage)
 
 	// Remove the evicted page from the list of loaded pages
 	pages.erase(pages.begin() + index);
+
+
+
+	printf(">>> Random: Page #%d at index %d was evicted.\n", virtualPage, index);
 }
 
 void RandomPRA::virtualPageLoaded(TableEntry *pageTable, int virtualPage)
@@ -40,5 +45,18 @@ void RandomPRA::virtualPageLoaded(TableEntry *pageTable, int virtualPage)
 
 void RandomPRA::virtualPageAccessed(TableEntry *pageTable, int virtualPage, bool modified)
 {
+
+	printf(">>> Number of current pages is: %d.\n", pages.size());
+
+
+	// --------- Reverse engineering the API -------------
+
+	printf(">>> Number of current pages is: %d.\n", pages.size());
+
+	// Let's try to print this page table contents first
+	TableEntry* table_ptr = pageTable;
+
+	printf("The physical page is currently %d.\n", table_ptr -> physicalPage); 
+	// Above gives -1 always. I think this value we change. 
 
 }

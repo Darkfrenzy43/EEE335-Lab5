@@ -80,4 +80,6 @@ void FIFO::virtualPageLoaded(TableEntry *pageTable, int virtualPage)
 void FIFO::virtualPageAccessed(TableEntry *pageTable, int virtualPage, bool modified)
 {
 	printf(">>> FIFO: Virtual page accessed.\n");
+	
+
 }

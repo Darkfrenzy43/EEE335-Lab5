@@ -1,10 +1,63 @@
+/*
+	Description:
+
+		Implementation of the Second Chance page table algorithm.
+
+
+	Notes:
+
+		- I've added a printer helper function just to help me out debug in here.
+		Turns out,  all other  files in the pageReplacementAlgorithms/ directory can 
+		also see the defined function, so that's rather convenient :/. 
+
+
+	Author: OCdt Liethan Velasco
+	
+*/
+
+
+
+
 #include "SecondChance.h"
 
 
 // --- Declaration of Helper Functions ---
-void printPageTable(TableEntry* pageTable); 
 
 
+/* 
+	Description:
+
+		A helper function used in debugging. Simply iterates through the page table contents
+		and print the information pertaining to each virtual page in the virtual memory.
+
+	Arguments:
+		<TableEntry* pageTable> : The pointer to the page table array used in the simulation.
+
+*/
+void printPageTable(TableEntry* pageTable) {
+
+	// Printing out table's contents for debugging
+	TableEntry* table_ptr = pageTable;
+	for (int i = 0; i < NUM_VPAGES; i++) {
+
+		// Extracting info
+		int phys_num = table_ptr -> physicalPage;
+		int used_bit =  table_ptr -> used;
+		int pres_bit =  table_ptr -> present;
+		int dirty_bit = table_ptr -> dirty;
+
+		// Print info for the given virtual page
+		printf("Virt page %3d: physical page  =  %2d; used = %d; present = %d; dirty = %d.\n", i, phys_num, used_bit, pres_bit, dirty_bit);
+
+		// Increment to next virtual page
+		table_ptr++;
+	}
+
+}
+
+
+
+// --- Inherited  functions to implement ---
 
 int SecondChance::findVirtualPageToEvict(TableEntry *pageTable)
 {
@@ -74,33 +127,3 @@ void SecondChance::virtualPageAccessed(TableEntry *pageTable, int virtualPage, b
 }
 
 
-/* 
-	Description:
-
-		A helper function used in debugging. Simply iterates through the page table contents
-		and print the information pertaining to each virtual page in the virtual memory.
-
-	Arguments:
-		<TableEntry* pageTable> : The pointer to the page table array used in the simulation.
-
-*/
-void printPageTable(TableEntry* pageTable) {
-
-	// Printing out table's contents for debugging
-	TableEntry* table_ptr = pageTable;
-	for (int i = 0; i < NUM_VPAGES; i++) {
-
-		// Extracting info
-		int phys_num = table_ptr -> physicalPage;
-		int used_bit =  table_ptr -> used;
-		int pres_bit =  table_ptr -> present;
-		int dirty_bit = table_ptr -> dirty;
-
-		// Print info for the given virtual page
-		printf("Virt page %3d: physical page  =  %2d; used = %d; present = %d; dirty = %d.\n", i, phys_num, used_bit, pres_bit, dirty_bit);
-
-		// Increment to next virtual page
-		table_ptr++;
-	}
-
-}

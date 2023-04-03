@@ -1,24 +1,26 @@
+
+
+
 #include "NRU.h"
 #include <stdio.h>
+
+
+// --- Declaration of Helper Functions in here to be explicit ---
+void printPageTable(TableEntry* pageTable);
+
 
 
 
 int NRU::findVirtualPageToEvict(TableEntry *pageTable)
 {
 
-	printf(">>>This happened.\n");
+
 
 	TableEntry* temp_ptr = pageTable; 
 
-	// Loop through all the page frames and categorize each in their classes
-	for (int i = 0; i < pages.size(); i++) {
-		
-		printf("Page %d: Reference bit = %d, Modify bit = %d\n", i, temp_ptr -> used, temp_ptr -> dirty);
-		temp_ptr++;
-		
-	}
-	// Find a random page in the lowest class to evict
-	
+
+
+
 
 	return 0;
 

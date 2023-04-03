@@ -16,9 +16,6 @@ private:
 	// Creating the queue for Second Chance algo
 	queue<int> page_queue;
 
-	// Establishing var to store number of pages
-	std::vector<int> pages;
-
 
 
 public:

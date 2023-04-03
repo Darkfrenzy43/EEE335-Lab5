@@ -1,7 +1,10 @@
 #pragma once
 
 #include "../PageReplacementAlgorithm.h"
+#include "../config.h"
+#include <stdio.h>
 #include <queue>
+
 
 using namespace std;
 

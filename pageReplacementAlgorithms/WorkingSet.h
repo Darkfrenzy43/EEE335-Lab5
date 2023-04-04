@@ -23,10 +23,6 @@ private:
 	// Create constant to represent the clock tick working set window 
 	const int WS_WINDOW = 10; 
 
-	// Create an array and element counter to contain all pages no longer in working set
-	int not_WS[NUM_PFRAMES];
-	int not_WS_count = 0;
-
 
 public:
 	WorkingSet() : PageReplacementAlgorithm() { }

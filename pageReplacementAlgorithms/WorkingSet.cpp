@@ -63,18 +63,6 @@ void printPageTable2(TableEntry* pageTable) {
 }
 
 
-/*  TO BE DELETED - ONLY HELPER */
-void  printNotWorkingSet(int in_arr[NUM_PFRAMES]) {
-
-	printf(">>> Not in Working Set: [");
-	for (int i = 0; i < NUM_PFRAMES; i++) {
-		printf(" %d ", in_arr[i]);
-	}
-	printf("]\n");
-
-}
-
-
 
 int WorkingSet::findVirtualPageToEvict(TableEntry *pageTable)
 {
@@ -160,7 +148,6 @@ int WorkingSet::findVirtualPageToEvict(TableEntry *pageTable)
 
 	}
 
-	printNotWorkingSet(loaded_pg_arr);
 
 	// If oldest_page = -1, means all pages were referenced before page fault and subsequenlty updated. If so, return a page randomly.
 	if (oldest_page == -1) {

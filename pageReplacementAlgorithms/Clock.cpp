@@ -69,6 +69,8 @@ int Clock::findVirtualPageToEvict(TableEntry *pageTable)
 void Clock::virtualPageEvicted(TableEntry *pageTable, int virtualPage)
 {
 
+	// Setting modified bit to 0 upon any page evict
+	pageTable[virtualPage].dirty = 0;
 }
 
 void Clock::virtualPageLoaded(TableEntry *pageTable, int virtualPage)
@@ -85,12 +87,11 @@ void Clock::virtualPageLoaded(TableEntry *pageTable, int virtualPage)
 void Clock::virtualPageAccessed(TableEntry *pageTable, int virtualPage, bool modified)
 {
 
-	// Set the used bit of the accessed page to 1
-	TableEntry* table_ptr = pageTable;
-	for (int i = 0; i < virtualPage; i++) {
-		table_ptr++;
+	// Setting used bit to 1, and modified bit to 1 if modified is true
+	pageTable[virtualPage].used = 1;
+	if (modified) {
+		pageTable[virtualPage].dirty = 1;
 	}
-	table_ptr -> used = 1;
 
 	// Printing page table for debugging
 	printPageTable(pageTable);

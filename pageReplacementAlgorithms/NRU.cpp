@@ -135,12 +135,8 @@ void NRU::virtualPageEvicted(TableEntry *pageTable, int virtualPage)
 
 	printf(">>> Virtual page %d evicted. Dirty bit cleared.\n", virtualPage);
 
-	// For any evicted page, always ensure its modified bit is cleared
-	TableEntry* table_ptr = pageTable;
-	for (int i = 0; i < virtualPage; i++) {
-		table_ptr++;
-	}
-	table_ptr -> dirty = 0;	
+	// Setting modified bit to 0 upon any page evict
+	pageTable[virtualPage].dirty = 0;
 
 }
 
@@ -152,16 +148,10 @@ void NRU::virtualPageLoaded(TableEntry *pageTable, int virtualPage)
 void NRU::virtualPageAccessed(TableEntry *pageTable, int virtualPage, bool modified)
 {
 	
-	// Set the used bit of the accessed page to 1
-	TableEntry* table_ptr = pageTable;
-	for (int i = 0; i < virtualPage; i++) {
-		table_ptr++;
-	}
-	table_ptr -> used = 1;
-
-	// Set the modified bit to 1 if modified argument is true
+	// Setting used bit to 1, and modified bit to 1 if modified is true
+	pageTable[virtualPage].used = 1;
 	if (modified) {
-		table_ptr -> dirty = 1;
+		pageTable[virtualPage].dirty = 1;
 	}
 
 	// Increment step counter for interrupts. If reached interrupt value, 

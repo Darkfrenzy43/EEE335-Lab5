@@ -64,6 +64,10 @@ void FIFO::virtualPageEvicted(TableEntry *pageTable, int virtualPage)
 {
 	printf(">>> FIFO: Page #%d was evicted.\n", virtualPage);
 	printQueue(page_queue);
+
+	// Setting modified bit to 0 upon any page evict
+	pageTable[virtualPage].dirty = 0;
+	
 }
 
 void FIFO::virtualPageLoaded(TableEntry *pageTable, int virtualPage)
@@ -80,6 +84,12 @@ void FIFO::virtualPageLoaded(TableEntry *pageTable, int virtualPage)
 void FIFO::virtualPageAccessed(TableEntry *pageTable, int virtualPage, bool modified)
 {
 	printf(">>> FIFO: Virtual page accessed.\n");
+
+	// Setting used bit to 1, and modified bit to 1 if modified is true
+	pageTable[virtualPage].used = 1;
+	if (modified) {
+		pageTable[virtualPage].dirty = 1;
+	}
 	
 
 }

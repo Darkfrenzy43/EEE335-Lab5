@@ -158,14 +158,14 @@ void NRU::virtualPageAccessed(TableEntry *pageTable, int virtualPage, bool modif
 	// incur interrupt (clear all the reference bits in vpages) and reset counter.
 	if (inter_count == CLK_INT) {
 
+		inter_count = 0;
+
 		printf(">>> CLOCK INTERRUPT: Clearing all used bits.\n");
 		
-		inter_count = 0;
-		
-		TableEntry* table_ptr = pageTable;
+		// Clear all the used bits of all the pages, loaded or not loaded (unnecessary, but is easier)
 		for (int i = 0; i < NUM_VPAGES; i++) {
-			table_ptr -> used = 0;
-			table_ptr++;
+			pageTable[i].used = 0;
+
 		}
 	}
 	else {

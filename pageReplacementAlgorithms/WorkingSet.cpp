@@ -6,16 +6,6 @@
 		We'll taking things slowly here just to make sure that everything is implemented correctly. 
 
 	
-	Notes:
-
-		- First, we implement the updating of the page's time last used field
-
-		- TODO Question: Are we supposed to collect all pages that are not in working set, and choose randomly which one should be removed?
-
-		Status:
-			- change how page fault handled (find first one, remove. If non found, remove largest. If all same, return random).
-
-	
 	Author: OCdt Liethan Velasco
 
 */

@@ -27,7 +27,7 @@ private:
 	// Create a counter to handle clock interrupts, and a constant marking
 	// after how many steps should a clock interrupt occur.
 	int inter_count = 0;
-	const int CLK_INT = 8;
+	const int CLK_INT = 4;
 
 
 
